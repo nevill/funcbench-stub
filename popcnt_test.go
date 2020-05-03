@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math/rand"
 	"testing"
 )
 
@@ -17,9 +18,11 @@ func popcnt(x uint64) uint64 {
 	return (x * h01) >> 56
 }
 
+var Result uint64
+
 func BenchmarkPopcnt(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		popcnt(uint64(i))
+		Result = popcnt(rand.Uint64())
 	}
 }
 
